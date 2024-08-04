@@ -1,13 +1,12 @@
 ﻿using System.Text.RegularExpressions;
 using WordWeb.Classes;
 using Humanizer;
-using System.IO;
 
 namespace WordWeb.Helpers;
 
 internal class WebBuilder
 {
-    private const string BAD_LINE = "BAD_LINE";
+    private readonly string BAD_LINE = "BAD_LINE";
 
     public Dictionary<string, Word> Build(string pathToDictionary)
     {
@@ -38,7 +37,7 @@ internal class WebBuilder
         }
         catch (Exception e)
         {
-            Console.WriteLine("Exception: " + e.Message);
+            Console.WriteLine($"Error: {e.Message}");
         }
 
         return words;
@@ -81,25 +80,39 @@ internal class WebBuilder
 
     private string Strip(string definition)
     {
-        var meaning = RemovePunctuation(definition);
-        meaning = EnsureSingleSpaceBetweenWords(meaning);
+        var meaning = RemoveMostPunctuation(definition);       
         meaning = HumanizeNumbers(meaning);
-        
-        return meaning.ToLower();
+        meaning = ReplaceDashesWithSpaces(meaning);
+        meaning = EnsureSingleSpaceBetweenWords(meaning);
+
+        return meaning.ToLower().Trim();
     }
 
-    private string RemovePunctuation(string meaning)
+    private string RemoveMostPunctuation(string meaning)
     {
-        return Regex.Replace(meaning, @"[^\w\s]", string.Empty);
+        // Retains the single dash
+        return Regex.Replace(meaning, @"[^\w\s-]|--", string.Empty);
     }
 
     private string HumanizeNumbers(string meaning)
     {
-        return Regex.Replace(meaning, @"\d+", match => int.Parse(match.Value).ToWords());
+        try
+        {
+            return Regex.Replace(meaning, @"\d+", match => int.Parse(match.Value).ToWords());
+        }
+        catch
+        {
+            return meaning;
+        }
     }
 
     private string EnsureSingleSpaceBetweenWords(string meaning)
     {
         return Regex.Replace(meaning, @"\s+", " ");
+    }
+
+    private string ReplaceDashesWithSpaces(string meaning)
+    {
+        return Regex.Replace(meaning, @"-", " ");
     }
 }

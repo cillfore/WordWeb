@@ -1,20 +1,20 @@
-﻿using WordWeb.Classes;
-using WordWeb.Helpers;
+﻿using WordWeb.Helpers;
 
 /*
  * WordWeb - 8/4/24
  * Cill Fore
  */
 
+var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+var englishDictionary = @"Dictionaries\English.csv";
+var englishDictionaryPath = Path.Combine(baseDirectory, englishDictionary);
+
 var webBuilder = new WebBuilder();
-var wordWeb = webBuilder.Build(@"C:\Users\cillf\source\repos\WordWeb\WordWeb\Dictionaries\English.csv");
+var wordWeb = webBuilder.Build(englishDictionaryPath);
+
+var webWriter = new WebWriter(wordWeb);
+webWriter.Write();
 
 Console.WriteLine($"Words in Web: {wordWeb.Count:n0}");
-
-foreach (var word in wordWeb.Values)
-{
-    var meanings = word.GetJoinedMeanings();
-    var pause = true;
-}
 
 Console.ReadLine();
