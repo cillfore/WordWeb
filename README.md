@@ -7,4 +7,4 @@ The original ethos of the project was to highlight the fickleness of words, to t
 
 So that's what this does. Given a CSV dictionary, this will build a vault for Obsidian, with the sole purpose of seeing every words definition(s) in the sprawling graph that makes up the language. It's far from perfect, but for my purposes (simply seeing the mess), it is more than sufficient. I would like to see other languages as well, but finding good dictionary files is a bit cumbersome, and I'm afraid it isn't that worth it to me. Maybe next decade!
 
-The dictionary included here was sourced from this repo: https://github.com/benjihillard/English-Dictionary-Database/blob/main/english%20Dictionary.csv.
+The dictionary included here was sourced from this repo: https://github.com/benjihillard/English-Dictionary-Database.
