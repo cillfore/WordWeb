@@ -12,3 +12,11 @@ Obsidian completely chokes around 16k words on my current computer, and it takes
 
 # Dictionary Source
 The dictionary included here was sourced from this repo: https://github.com/benjihillard/English-Dictionary-Database.
+
+# End Result
+
+![image](https://github.com/user-attachments/assets/85e838d8-0b18-4210-b7ec-7484f950b52e)
+
+![image](https://github.com/user-attachments/assets/e050fd6a-6bf0-4e11-8bc0-49530c1fad23)
+
+![image](https://github.com/user-attachments/assets/c9f5ae95-52bb-4144-a948-59df76bbc790)
